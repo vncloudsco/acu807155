@@ -1,0 +1,32 @@
+{
+ "info": {
+  "license_key": "Cracked-By-nszy007-Funning",
+  "company": "Test.com",
+  "name": "nszy007",
+  "phone": "00111111111111",
+  "email": "test@test.com",
+  "country": "US",
+  "first_activated": "2020-02-05T14:17:33.34",
+  "expires": "false",
+  "maintenance_expires": "2099-10-01T20:17:52",
+  "max_engines": 999999,
+  "max_targets": 999999,
+  "product_code": "AOPENT",
+  "bxss_user_id": "",
+  "bxss_api_key": "",
+  "is_offline": false,
+  "is_worker": false
+ },
+ "major_version": 13,
+ "minor_version": 0,
+ "build_number": 200205121,
+ "expired": false,
+ "maintenance_expired": false,
+ "scan": true,
+ "update": true,
+ "access": true,
+ "activated": true,
+ "checksum": "c2af407cd587755924310f5ee64cf5ad",
+ "grace": -1,
+ "last_reactivated": "2020-02-10T20:17:52"
+}
