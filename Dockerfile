@@ -1,4 +1,4 @@
-FROM kalilinux/kali-rolling
+FROM ubuntu:18.04
 
 RUN apt-get update -y && \
     apt-get -y install libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 sudo bzip2 wget expect libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 libx11-xcb1
