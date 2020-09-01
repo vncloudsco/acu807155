@@ -1,0 +1,9 @@
+version: '3'
+services:
+  acunetix:
+    build: .
+    ports:
+      - "443:3443"
+    image: acu1345
+    volumes:
+      - ./home/acunetix/.acunetix/data/:/data
