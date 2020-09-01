@@ -7,5 +7,5 @@ services:
       - "443:3443"
     image: acu1345
     volumes:
-      - /home/acunetix/.acunetix/data:/home/acunetix/.acunetix/data
-
+        - /home/acunetix/.acunetix/data/scans:/home/acunetix/.acunetix/data/scans
+        - /home/acunetix/.acunetix/data/targets:/home/acunetix/.acunetix/data/targets
