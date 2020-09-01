@@ -1,0 +1,8 @@
+version: '2'
+services:
+ web:
+   image: vouu/acu807155
+   ports:
+    - "443:3443"
+   volumes:
+    - ./home/acunetix/.acunetix/data/:/data
