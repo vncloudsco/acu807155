@@ -16,3 +16,10 @@ Password:Abcd1234
 ```
 
 Thank you!
+
+Run docker compose
+
+```
+docker-compose build
+docker-compose up -d
+```
