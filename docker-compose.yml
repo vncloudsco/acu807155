@@ -2,6 +2,7 @@ version: '3'
 services:
   acunetix:
     build: .
+    restart: always
     ports:
       - "443:3443"
     image: acu1345
