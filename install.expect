@@ -10,7 +10,6 @@ expect ">>>"
  
 send -h "\r\n"
 send -h "q\r"
-send -h "\x03"
 
 expect "Accept the license terms?"
 send -h "yes\r"
