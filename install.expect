@@ -3,7 +3,7 @@
 set timeout -1
 set send_human {.1 .3 1 .05 2}
  
-spawn bash ./acunetix_14.2.210503151_x64.sh
+spawn bash ./acunetix_14.3.210628104_x64.sh
  
 # expect "press ENTER to continue\r"
 expect ">>>"
