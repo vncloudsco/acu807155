@@ -52,9 +52,6 @@ ENTRYPOINT [ "/awvs/awvs.sh"]
 
 EXPOSE 3443
 
-# ENV TZ='Asia/Shanghai'
-# ENV LANG 'zh_CN.UTF-8'
-
 STOPSIGNAL SIGQUIT
 
 CMD ["/awvs/awvs.sh"]
