@@ -1,25 +1,105 @@
-Run: 
+# AWVS14 Docker
+
+
+## INFO
+
+Version 14 build 14.3.210628104 for Windows, Linux and macOS – 28th June 2021
+
+### Updates
+
+- Target Knowledgebase will be reset when Target Settings are changed
+- Updated SSL/TLS Certificate expiry threshold notification from 30 days to 60 days
+
+### Fixes
+
+- Fixed: OWASP compliance report template to not be available in some Editions
+- Fixed: Some scripts where not observing Excluded paths configured in Target settings
+
+```info login
+ip:3443
+contact@manhtuong.net
+Abcd1234
 ```
-docker build -t acu13 .
-docker run -it -d -p 443:3443 acu13
+
+
+
+## Preview
+
+![image-20210505193332022](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210505201037686297.png?w=1280&fmt=jpg)
+
+## Install
+
+```bash
+docker run -it -d \
+--name awvs \
+-p 3443:3443 \
+xrsec/awvs:v14
 ```
 
+## [BuildFile](https://github.com/XRSec/AWVS14-Docker)
 
-Login Info
+### Dockerfile
 
-```
-login: https://localhost
+```dockerfile
+FROM ubuntu:18.04
+LABEL maintainer="xrsec"
+LABEL mail="troy@zygd.site"
 
-Email: contact@manhtuong.net
+RUN mkdir /awvs
+COPY awvs.sh /awvs
+COPY Dockerfile /awvs
+COPY xaa /awvs
+COPY xab /awvs
+COPY xac /awvs
+COPY xad /awvs
+COPY xae /awvs
+COPY xaf /awvs
+COPY awvs_listen.zip /awvs
 
-Password:Abcd1234
-```
+# init
+# RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak \
+#     && sed -i "s/archive.ubuntu/mirrors.aliyun/g" /etc/apt/sources.list \
+#     && sed -i "s/security.ubuntu/mirrors.aliyun/g" /etc/apt/sources.list \
+#     && apt update -y \
+RUN apt update -y \
+    && apt upgrade -y \
+    && apt-get install wget libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 libx11-xcb-dev sudo libgbm-dev curl ncurses-bin unzip -y
+    # && apt-get install wget libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 libx11-xcb-dev sudo libgbm-dev curl ncurses-bin unzip -y \
+    # && mv /etc/apt/sources.list.bak /etc/apt/sources.list
 
-Thank you!
+# init_install
+RUN cat /awvs/xaa /awvs/xab /awvs/xac /awvs/xad /awvs/xae /awvs/xaf > /awvs/awvs_x86.sh \
+    && chmod 777 /awvs/awvs_x86.sh \
+    && sed -i "s/read -r dummy/#read -r dummy/g" /awvs/awvs_x86.sh \
+    && sed -i "s/pager=\"more\"/pager=\"cat\"/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -r ans/ans=yes/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -p \"    Hostname \[\$host_name\]:\" hn/hn=awvs/g" /awvs/awvs_x86.sh \
+    && sed -i "s/host_name=\$(hostname)/host_name=awvs/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -p \"    Hostname \[\$host_name\]:\" hn/awvs/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -p '    Email: ' master_user/master_user=awvs@awvs.com/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -sp '    Password: ' master_password/master_password=Awvs@awvs.com/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -sp '    Password again: ' master_password2/master_password2=Awvs@awvs.com/g" /awvs/awvs_x86.sh \
+    && sed -i "s/systemctl/\# systemctl/g"  /awvs/awvs_x86.sh \
+    && /bin/bash /awvs/awvs_x86.sh
 
-Run docker compose
+# init_listen
+RUN chmod 777 /awvs/awvs.sh \
+    && unzip -d /awvs/awvs_listen /awvs/awvs_listen.zip \
+    && chmod 444 /awvs/awvs_listen/license_info.json \
+    && cp /awvs/awvs_listen/wvsc /home/acunetix/.acunetix/v_210628104/scanner/ \
+    && cp /awvs/awvs_listen/license_info.json /home/acunetix/.acunetix/data/license/ \
+    && cp /awvs/awvs_listen/wa_data.dat /home/acunetix/.acunetix/data/license/ \
+    && chown acunetix:acunetix /home/acunetix/.acunetix/data/license/wa_data.dat
 
-```
-docker-compose build
-docker-compose up -d
+ENTRYPOINT [ "/awvs/awvs.sh"]
+
+EXPOSE 3443
+
+# ENV TZ='Asia/Shanghai'
+# ENV LANG 'zh_CN.UTF-8'
+
+STOPSIGNAL SIGQUIT
+
+CMD ["/awvs/awvs.sh"]
+
 ```
