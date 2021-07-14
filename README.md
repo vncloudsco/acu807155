@@ -30,5 +30,7 @@ Abcd1234
 ## Install
 
 ```bash
+git clone https://github.com/vncloudsco/acu807155/
+cd acu807155
 docker build -t aws .
 ```
