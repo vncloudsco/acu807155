@@ -30,8 +30,5 @@ Abcd1234
 ## Install
 
 ```bash
-docker run -it -d \
---name awvs \
--p 3443:3443 \
-xrsec/awvs:v14
+docker build -t aws .
 ```
