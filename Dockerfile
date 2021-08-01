@@ -35,7 +35,7 @@ RUN cat /awvs/xaa /awvs/xab /awvs/xac /awvs/xad /awvs/xae /awvs/xaf > /awvs/awvs
     && sed -i "s/read -p \"    Hostname \[\$host_name\]:\" hn/awvs/g" /awvs/awvs_x86.sh \
     && sed -i "s/read -p '    Email: ' master_user/master_user=contact@manhtuong.net/g" /awvs/awvs_x86.sh \
     && sed -i "s/read -sp '    Password: ' master_password/master_password=Abcd1234/g" /awvs/awvs_x86.sh \
-    && sed -i "s/read -sp '    Password again: ' master_password2/master_password2=Awvs@awvs.com/g" /awvs/awvs_x86.sh \
+    && sed -i "s/read -sp '    Password again: ' master_password2/master_password2=Abcd1234/g" /awvs/awvs_x86.sh \
     && sed -i "s/systemctl/\# systemctl/g"  /awvs/awvs_x86.sh \
     && /bin/bash /awvs/awvs_x86.sh
 
