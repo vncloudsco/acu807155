@@ -16,7 +16,7 @@ Version 14 build 14.3.210628104 for Windows, Linux and macOS – 28th June 2021
 - Fixed: Some scripts where not observing Excluded paths configured in Target settings
 
 ```info login
-ip:3443
+https://localhost:3443
 contact@manhtuong.net
 Abcd1234
 ```
@@ -33,4 +33,5 @@ Abcd1234
 git clone https://github.com/vncloudsco/acu807155/
 cd acu807155
 docker build -t aws .
+docker run -it -d -p 3443:3443 aws
 ```
