@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update -y && \
-    apt-get -y install wget libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 libx11-xcb1 libxcb-dri3-0 libgbm1 libdrm2 libxshmfence1
+    apt-get -y install wget expect libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 libx11-xcb1 libxcb-dri3-0 libgbm1 libdrm2 libxshmfence1
 
 RUN cd /tmp && \
 	wget --no-check-certificate https://blog.manhtuong.net/aws/acunetix.sh && \
