@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  acunetix:
+    build:
+      dockerfile: Dockerfile
+    container_name: acunetix
+    ports:
+      - "8080:3443"
+    volumes:
+      - acunetix_data:/home/acunetix/.acunetix/data
+      - acunetix_db:/home/acunetix/.acunetix/db
+      - acunetix_log:/home/acunetix/.acunetix/log
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3443"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - network-bridge
+networks:
+  network-bridge:
+    driver: bridge
+volumes:
+  acunetix_data:
+  acunetix_log:
+  acunetix_db:

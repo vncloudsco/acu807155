@@ -1,37 +1,16 @@
-# AWVS14 Docker
+## AWVS 15.1  Docker Active
 
 
-## INFO
+### Run conmand to build and run 
 
-Version 14 build 14.3.210628104 for Windows, Linux and macOS – 28th June 2021
-
-### Updates
-
-- Target Knowledgebase will be reset when Target Settings are changed
-- Updated SSL/TLS Certificate expiry threshold notification from 30 days to 60 days
-
-### Fixes
-
-- Fixed: OWASP compliance report template to not be available in some Editions
-- Fixed: Some scripts where not observing Excluded paths configured in Target settings
-
-```info login
-https://localhost:3443
-contact@manhtuong.net
-Abcd1234
+```
+docker-compose up -d
 ```
 
+### INfo login
 
-
-## Preview
-
-![image-20210505193332022](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210505201037686297.png?w=1280&fmt=jpg)
-
-## Install
-
-```bash
-git clone https://github.com/vncloudsco/acu807155/
-cd acu807155
-docker build -t aws .
-docker run -it -d -p 3443:3443 aws
+```
+URL: https://server_ip:3443/#/login
+UserName: awvs@awvs.lan
+PassWord: Awvs@awvs.lan
 ```
